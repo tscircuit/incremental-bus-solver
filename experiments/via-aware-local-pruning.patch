@@ -1,0 +1,68 @@
+diff --git a/lib/refiner.ts b/lib/refiner.ts
+index 29545bc..4778904 100644
+--- a/lib/refiner.ts
++++ b/lib/refiner.ts
+@@ -2,12 +2,12 @@ import { createHash } from "node:crypto"
+ import { ordinaryRunCandidates } from "../vendor/lib/simplify-matched-traces"
+ import { length } from "../vendor/lib/geometry"
+ import { busLengthReports } from "../vendor/lib/route-lengths"
+-import { VectorScene, fixedCopper, routeCopper } from "../vendor/lib/vector-scene"
++import { VectorScene, fixedCopper } from "../vendor/lib/vector-scene"
+ import { measureAm3352RoutingQuality } from "../vendor/scripts/measure-am3352-routing-quality"
+ import type { SimpleRouteJson, Trace, Wire } from "../vendor/lib/types"
+ 
+ export const UPSTREAM = "9fada5b83a67e0e49de54ee7ae8e6974b1c028eb"
+-export const CONTRACT = "upstream-validation+pareto-quality-v3"
++export const CONTRACT = "upstream-validation+pareto-quality-v3+via-aware-search-v1"
+ export const hash = (x: unknown) => createHash("sha256").update(JSON.stringify(x)).digest("hex")
+ export type Score = { areaMm2: number; copperMm: number; turns: number; shortJogs: number; maxDetour: number }
+ export type Audit = { valid: boolean; issues?: string[]; [key: string]: unknown }
+@@ -116,7 +116,7 @@ export class Refiner {
+       const original = this.input.connections.find(c => c.name === s.best[p.trace].connection_name)!
+       const a = s.best[p.trace].route[p.start] as Wire
+       const scene = new VectorScene(this.input,{...original,pointsToConnect:[a,{...s.best[p.trace].route[p.end],layer:a.layer}]},a.width,
+-        [...fixedCopper(this.input),...s.best.flatMap(routeCopper)])
++        fixedCopper({...this.input,traces:[...(this.input.traces??[]),...s.best]}))
+       if (!scene.pathVisible(p.points)) reason="local_clearance_failed"
+       else {
+         next = score(this.input,candidate)
+diff --git a/tests/via-aware.test.ts b/tests/via-aware.test.ts
+new file mode 100644
+index 0000000..a0003ad
+--- /dev/null
++++ b/tests/via-aware.test.ts
+@@ -0,0 +1,34 @@
++import { expect,test } from "bun:test"
++import { validateRoutedCopperDrc,validateOriginalEndpointConnectivity } from "@tscircuit/fanout-solver"
++import { Refiner } from "../lib/refiner"
++import type { SimpleRouteJson,Trace,Wire } from "../vendor/lib/types"
++const wire=(x:number,y:number,layer="inner1"):Wire=>({x,y,layer,width:0.1,route_type:"wire"})
++test("a full-stack via blocks a shortcut on an intermediate layer before the expensive audit",async()=>{
++  const input:SimpleRouteJson={layerCount:4,minTraceWidth:0.1,minTraceToPadEdgeClearance:0.1,
++    minViaPadDiameter:0.4,minViaHoleDiameter:0.2,
++    bounds:{minX:-2,maxX:12,minY:-4,maxY:4},obstacles:[],connections:[
++      {name:"a",pointsToConnect:[wire(0,0),wire(10,0)]},
++      {name:"b",pointsToConnect:[wire(5,-2,"top"),wire(5,2,"bottom")]}]}
++  const traces:Trace[]=[{type:"pcb_trace",pcb_trace_id:"a",connection_name:"a",
++    route:[wire(0,0),wire(1,0),wire(2,1),wire(8,1),wire(9,0),wire(10,0)]},
++    {type:"pcb_trace",pcb_trace_id:"b",connection_name:"b",route:[wire(5,-2,"top"),wire(5,0,"top"),
++      {route_type:"via",x:5,y:0,from_layer:"top",to_layer:"bottom",layers:["top","inner1","inner2","bottom"],via_diameter:0.4,via_hole_diameter:0.2},
++      wire(5,0,"bottom"),wire(5,2,"bottom")]}]
++  let calls=0
++  const validate=async(candidate:Trace[])=>{
++    calls++
++    const inputSrj={...input,obstacles:[],traces:[]},routedSrj={...inputSrj,traces:candidate.map(trace=>{
++      if(!trace.connection_name)throw Error("Missing required trace ownership")
++      return {...trace,connection_name:trace.connection_name}
++    })}
++    const drc=validateRoutedCopperDrc({inputSrj,routedSrj,clearance:0.1})
++    const connectivity=validateOriginalEndpointConnectivity({inputSrj,routedSrj})
++    return {valid:drc.valid&&connectivity.valid,issues:drc.issues.map(i=>i.message)}
++  }
++  const s=await Refiner.create(input,traces,61,validate)
++  expect(calls).toBe(1)
++  const first=await s.step()
++  expect(first.event.reason).toBe("local_clearance_failed")
++  expect(calls).toBe(1)
++  expect((await validate([{...traces[0],route:[wire(0,0),wire(10,0)]},traces[1]])).valid).toBe(false)
++})

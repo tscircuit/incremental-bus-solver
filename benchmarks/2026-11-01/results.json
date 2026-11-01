@@ -1,0 +1,1125 @@
+{
+  "datasetRevision": "9fada5b83a67e0e49de54ee7ae8e6974b1c028eb",
+  "environment": {
+    "os": "Ubuntu 26.04.1",
+    "architecture": "arm64",
+    "cpus": 4,
+    "ramKiB": 7905916,
+    "bun": "1.3.2"
+  },
+  "baseline": {
+    "solved": 11,
+    "total": 11,
+    "failures": [],
+    "runtimeSeconds": {
+      "sum": 6458.174762501,
+      "mean": 587.106796591,
+      "p50": 195.88107110899998,
+      "p95": 2169.7345741715
+    },
+    "workerRuntimeSeconds": {
+      "sum": 6631.562255489,
+      "mean": 602.8692959535455,
+      "p50": 202.37561517900002,
+      "p95": 2181.223129793
+    },
+    "validatedSignalCount": 517
+  },
+  "head": {
+    "solved": 11,
+    "total": 11,
+    "failures": [],
+    "runtimeSeconds": {
+      "sum": 8358.954136773,
+      "mean": 759.9049215248182,
+      "p50": 317.21809902800004,
+      "p95": 2307.8838462815
+    },
+    "workerRuntimeSeconds": {
+      "sum": 8539.311970771,
+      "mean": 776.301088251909,
+      "p50": 324.465779695,
+      "p95": 2320.1794085775
+    },
+    "validatedSignalCount": 517
+  },
+  "qualityChanges": {
+    "casesByRelation": {
+      "strict_improvement": 7,
+      "plateau": 4
+    },
+    "baselineToFinal": {
+      "copperMm": -33.14659293442014,
+      "turns": -61,
+      "shortJogs": -28
+    },
+    "initialRoutingVariation": {
+      "copperMm": 0,
+      "turns": 0,
+      "shortJogs": 0
+    },
+    "incrementalEdits": {
+      "additiveDelta": {
+        "copperMm": -33.14659293442014,
+        "turns": -61,
+        "shortJogs": -28
+      },
+      "casesWithAcceptedEdits": 7,
+      "accepted": 22,
+      "rejected": 9461,
+      "steps": 9483
+    }
+  },
+  "method": {
+    "caseCount": 11,
+    "requiredSignalsPerCase": 47,
+    "immutablePowerDogbonesPerCase": 161,
+    "timeoutSeconds": 3600,
+    "runtime": "Bun 1.3.2",
+    "host": "ubuntu-8gb-nbg1-1",
+    "architecture": "arm64",
+    "scoring": "Original upstream solved/validation and quality metrics; no upstream scalar score exists. Pareto relation is an additional disclosed ordering.",
+    "attribution": "Fresh initial routes can vary under upstream time-bounded search. initialRoutingDelta separates that variation from refinementDelta, measured against the hash-bound validated anchor. Overall delta remains the actual baseline versus final result.",
+    "artifactValidation": "All 22 completed baseline/head exports freshly passed the pinned original independent physical and output-shape checks, with exact score equality. All initial route geometry matched baseline.",
+    "timing": "runtimeSeconds uses original solveMilliseconds, including refinement. workerRuntimeSeconds also includes fixture loading and independent validation. Host contention and subsequent serialization varied; no speedup claim. Percentiles use linear interpolation.",
+    "reruns": "Two predeclared infrastructure-affected baseline cases were remeasured. Head control was also predeclared for one unconditional remeasurement because its first run preceded checkpoint-integrity fixes. All final head workers use identical frozen search/acceptance/persistence code. Original attempts are retained; no best-of-repeat selection. Fixtures, runtime, checks and 3600s budget are unchanged."
+  },
+  "measuredEngine": {
+    "frozenAtUtc": "2026-10-31T23:19:01Z",
+    "upstream": "9fada5b83a67e0e49de54ee7ae8e6974b1c028eb",
+    "searchAndAdapterCommit": "053a8db8384ff27d44fd7959b2a51a2071b89071",
+    "persistenceCommit": "7b642617203e217716c1e34e095b9391fea00333",
+    "modules": {
+      "lib/refiner.ts": "520b3544f36a798d7e3cd7dc5a9a198da26652405f9ec1817ec98f4cbb69bba8",
+      "lib/solver.ts": "01365914a81d77490d13a192e0d8dc31c0af2e1e5d7ff10026653c6a43c93a3f",
+      "lib/store.ts": "186a28dd32c09efd1d1384560157bbdef4fc4a7945b4b1a0ac221f8ed257f201",
+      "scripts/refinement-worker.ts": "573d73b0e37ef439c3b202940dec4a10496924a07c0c2b511bbcfbed41a2bf8d"
+    },
+    "controlRerun": "Predeclared once at2026-11-01T01:18:12Z before rerun, unconditional replacement after full head run. Earlier control predates persistence integrity helpers; search/acceptance unchanged. Earlier attempt retained. All other refinement workers loaded final Store after23:19UTC."
+  },
+  "cases": [
+    {
+      "sample": "control",
+      "baselineScore": {
+        "areaMm2": 376.47346825445,
+        "copperMm": 1521.3642835076403,
+        "turns": 633,
+        "shortJogs": 169,
+        "maxDetour": 2.2249291340002992
+      },
+      "headScore": {
+        "areaMm2": 376.47346825445,
+        "copperMm": 1521.1302876091984,
+        "turns": 632,
+        "shortJogs": 168,
+        "maxDetour": 2.2249291340002992
+      },
+      "initialRoutingScore": {
+        "areaMm2": 376.47346825445,
+        "copperMm": 1521.3642835076403,
+        "turns": 633,
+        "shortJogs": 169,
+        "maxDetour": 2.2249291340002992
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -0.23399589844188995,
+        "turns": -1,
+        "shortJogs": -1,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -0.23399589844188995,
+        "turns": -1,
+        "shortJogs": -1,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "a34f6c594ff170044479",
+        "steps": 870,
+        "accepted": 1,
+        "rejected": 869,
+        "queueRemaining": 861,
+        "bestHash": "12d510940b42ffd365549e5d1ce3bcba1900e042bc40edcd1cce292923efb20a",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "b7a4e9d09a22fe0ed131a544548b14eef20fbf4e88b6dc6ffaa11ca44e6bfe59",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 78182.383766,
+        "milliseconds": 83788.583214,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "b7a4e9d09a22fe0ed131a544548b14eef20fbf4e88b6dc6ffaa11ca44e6bfe59",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 274206.84729,
+        "milliseconds": 280388.22626200004,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "control-inner1",
+      "baselineScore": {
+        "areaMm2": 784.1600000000002,
+        "copperMm": 1674.3841700586502,
+        "turns": 519,
+        "shortJogs": 91,
+        "maxDetour": 2.2096346963899838
+      },
+      "headScore": {
+        "areaMm2": 784.1600000000002,
+        "copperMm": 1674.0061370500614,
+        "turns": 513,
+        "shortJogs": 89,
+        "maxDetour": 2.2096346963899838
+      },
+      "initialRoutingScore": {
+        "areaMm2": 784.1600000000002,
+        "copperMm": 1674.3841700586502,
+        "turns": 519,
+        "shortJogs": 91,
+        "maxDetour": 2.2096346963899838
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -0.37803300858877265,
+        "turns": -6,
+        "shortJogs": -2,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -0.37803300858877265,
+        "turns": -6,
+        "shortJogs": -2,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "3f96061f0b7c393be1d7",
+        "steps": 670,
+        "accepted": 6,
+        "rejected": 664,
+        "queueRemaining": 44,
+        "bestHash": "c5e9a3120b21aef268a70bb6b9f3aec60a75156028185e41c98b11699f22d1f9",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "14b5b318540ce7bac367cf22338abd7f9fffd2f7ce6c2a12f903116f50ca9bde",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 2607776.669582,
+        "milliseconds": 2617925.917154,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "14b5b318540ce7bac367cf22338abd7f9fffd2f7ce6c2a12f903116f50ca9bde",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 2792447.298378,
+        "milliseconds": 2803660.8401719998,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "right",
+      "baselineScore": {
+        "areaMm2": 658.5967248000002,
+        "copperMm": 1863.7541810814996,
+        "turns": 675,
+        "shortJogs": 160,
+        "maxDetour": 1.7931443603246013
+      },
+      "headScore": {
+        "areaMm2": 658.5967248000002,
+        "copperMm": 1863.7541810814996,
+        "turns": 675,
+        "shortJogs": 160,
+        "maxDetour": 1.7931443603246013
+      },
+      "initialRoutingScore": {
+        "areaMm2": 658.5967248000002,
+        "copperMm": 1863.7541810814996,
+        "turns": 675,
+        "shortJogs": 160,
+        "maxDetour": 1.7931443603246013
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "scoreRelation": "plateau",
+      "refinement": {
+        "runId": "5afbf509dec2cd5f3a97",
+        "steps": 1024,
+        "accepted": 0,
+        "rejected": 1024,
+        "queueRemaining": 1697,
+        "bestHash": "e5425c2f8570920acf830f0f635f8d4d820e0c23e80d65e808bc47fd60381eb8",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "78c22c8d818ee2c2abe2eec9c6b6e408161a9d0eaf09afbafc3242e71e8f5778",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 74014.457971,
+        "milliseconds": 83668.527779,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "78c22c8d818ee2c2abe2eec9c6b6e408161a9d0eaf09afbafc3242e71e8f5778",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 183794.256135,
+        "milliseconds": 193539.19547099998,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "left",
+      "baselineScore": {
+        "areaMm2": 560.7948094020932,
+        "copperMm": 1915.0507578142108,
+        "turns": 963,
+        "shortJogs": 307,
+        "maxDetour": 1.9988046246670854
+      },
+      "headScore": {
+        "areaMm2": 560.7948094020932,
+        "copperMm": 1915.0507578142108,
+        "turns": 963,
+        "shortJogs": 307,
+        "maxDetour": 1.9988046246670854
+      },
+      "initialRoutingScore": {
+        "areaMm2": 560.7948094020932,
+        "copperMm": 1915.0507578142108,
+        "turns": 963,
+        "shortJogs": 307,
+        "maxDetour": 1.9988046246670854
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "scoreRelation": "plateau",
+      "refinement": {
+        "runId": "729ec73fa14050bd07e5",
+        "steps": 1024,
+        "accepted": 0,
+        "rejected": 1024,
+        "queueRemaining": 3072,
+        "bestHash": "11f5dbc031ce8898f455512954987afff0c84fb3f09be434d6b0180c0c9a1f1e",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "6042ca0f0889a983a6ccf8f929a6a46b18cc57134e1b9f3b49c19063b936caa5",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 94013.76483799999,
+        "milliseconds": 114155.889616,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "6042ca0f0889a983a6ccf8f929a6a46b18cc57134e1b9f3b49c19063b936caa5",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 257241.283268,
+        "milliseconds": 273990.672846,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "above",
+      "baselineScore": {
+        "areaMm2": 614.3597399162372,
+        "copperMm": 2100.8152108476634,
+        "turns": 747,
+        "shortJogs": 226,
+        "maxDetour": 1.5928485038259055
+      },
+      "headScore": {
+        "areaMm2": 614.3597399162372,
+        "copperMm": 2096.104618476755,
+        "turns": 729,
+        "shortJogs": 215,
+        "maxDetour": 1.5928485038259055
+      },
+      "initialRoutingScore": {
+        "areaMm2": 614.3597399162372,
+        "copperMm": 2100.8152108476634,
+        "turns": 747,
+        "shortJogs": 226,
+        "maxDetour": 1.5928485038259055
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -4.710592370908216,
+        "turns": -18,
+        "shortJogs": -11,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -4.710592370908216,
+        "turns": -18,
+        "shortJogs": -11,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "a5c19b84d5ca68169fad",
+        "steps": 1024,
+        "accepted": 5,
+        "rejected": 1019,
+        "queueRemaining": 1734,
+        "bestHash": "4ca566131423853d6ad996a5e42f7ac75b283d1dd066e90eca85f8f5c84240b3",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "20fc884f08accd368e4ce049ab3fc180a1926f425787a504dbc4040f651bfa69",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 93512.753952,
+        "milliseconds": 106205.819462,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "20fc884f08accd368e4ce049ab3fc180a1926f425787a504dbc4040f651bfa69",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 288678.48795800004,
+        "milliseconds": 301395.969917,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "inner-layers",
+      "baselineScore": {
+        "areaMm2": 419.08007832973794,
+        "copperMm": 1611.1820801106483,
+        "turns": 749,
+        "shortJogs": 204,
+        "maxDetour": 2.2249291340002992
+      },
+      "headScore": {
+        "areaMm2": 419.08007832973794,
+        "copperMm": 1610.5523596901994,
+        "turns": 747,
+        "shortJogs": 202,
+        "maxDetour": 2.2249291340002992
+      },
+      "initialRoutingScore": {
+        "areaMm2": 419.08007832973794,
+        "copperMm": 1611.1820801106483,
+        "turns": 749,
+        "shortJogs": 204,
+        "maxDetour": 2.2249291340002992
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -0.629720420448848,
+        "turns": -2,
+        "shortJogs": -2,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -0.629720420448848,
+        "turns": -2,
+        "shortJogs": -2,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "603fc285b82e45302512",
+        "steps": 1024,
+        "accepted": 1,
+        "rejected": 1023,
+        "queueRemaining": 2033,
+        "bestHash": "7538228569bb2f17e1237416aff0d7c856b27c0bd89281bd2b90f533e438f8aa",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "1b91e6c5207e4b7e132aa5ac246e94777f926c7beab8675adf0356634b8280ad",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 114698.678479,
+        "milliseconds": 120783.211664,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "1b91e6c5207e4b7e132aa5ac246e94777f926c7beab8675adf0356634b8280ad",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 234074.074196,
+        "milliseconds": 240574.311649,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "inner-layers-right",
+      "baselineScore": {
+        "areaMm2": 788.4239666110615,
+        "copperMm": 2135.9927107029725,
+        "turns": 742,
+        "shortJogs": 201,
+        "maxDetour": 2.247087983382887
+      },
+      "headScore": {
+        "areaMm2": 788.4239666110615,
+        "copperMm": 2135.9927107029725,
+        "turns": 742,
+        "shortJogs": 201,
+        "maxDetour": 2.247087983382887
+      },
+      "initialRoutingScore": {
+        "areaMm2": 788.4239666110615,
+        "copperMm": 2135.9927107029725,
+        "turns": 742,
+        "shortJogs": 201,
+        "maxDetour": 2.247087983382887
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "scoreRelation": "plateau",
+      "refinement": {
+        "runId": "0dbaff0bbe74647255c6",
+        "steps": 1024,
+        "accepted": 0,
+        "rejected": 1024,
+        "queueRemaining": 1905,
+        "bestHash": "c28c979cdf908ed68b8fc3d8567c48aab87969fed96401edb7dd66e7b001cf57",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "2eaf3dedcd84fbfed10262f4d4c99370a0ca00a7a060f87b7a1cdcba9de37a8e",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 195881.07110899998,
+        "milliseconds": 202375.61517900001,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "2eaf3dedcd84fbfed10262f4d4c99370a0ca00a7a060f87b7a1cdcba9de37a8e",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 317218.099028,
+        "milliseconds": 324465.779695,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "inner-layers-left",
+      "baselineScore": {
+        "areaMm2": 723.0579373602721,
+        "copperMm": 2057.7205684352143,
+        "turns": 987,
+        "shortJogs": 316,
+        "maxDetour": 2.2526008602674334
+      },
+      "headScore": {
+        "areaMm2": 723.0579373602721,
+        "copperMm": 2046.9898973173977,
+        "turns": 969,
+        "shortJogs": 310,
+        "maxDetour": 2.2526008602674334
+      },
+      "initialRoutingScore": {
+        "areaMm2": 723.0579373602721,
+        "copperMm": 2057.7205684352143,
+        "turns": 987,
+        "shortJogs": 316,
+        "maxDetour": 2.2526008602674334
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -10.730671117816655,
+        "turns": -18,
+        "shortJogs": -6,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -10.730671117816655,
+        "turns": -18,
+        "shortJogs": -6,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "de73c963ae345cf5e825",
+        "steps": 788,
+        "accepted": 3,
+        "rejected": 785,
+        "queueRemaining": 4068,
+        "bestHash": "52817bb3f6371d01f0cc408fce6d69e0736f2a3b7026139acaab3de09b391dfd",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "1c3db8ee018bc90df7fbbb0c198c42efcc0ca948a6a213338650cf81a51f7ab2",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 423330.36502,
+        "milliseconds": 443399.735197,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "1c3db8ee018bc90df7fbbb0c198c42efcc0ca948a6a213338650cf81a51f7ab2",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 643249.3019170001,
+        "milliseconds": 664244.591132,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "inner-layers-above",
+      "baselineScore": {
+        "areaMm2": 906.053642475177,
+        "copperMm": 2472.302731412189,
+        "turns": 862,
+        "shortJogs": 258,
+        "maxDetour": 2.141045140015858
+      },
+      "headScore": {
+        "areaMm2": 906.053642475177,
+        "copperMm": 2456.356311167212,
+        "turns": 850,
+        "shortJogs": 255,
+        "maxDetour": 2.141045140015858
+      },
+      "initialRoutingScore": {
+        "areaMm2": 906.053642475177,
+        "copperMm": 2472.302731412189,
+        "turns": 862,
+        "shortJogs": 258,
+        "maxDetour": 2.141045140015858
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -15.946420244977162,
+        "turns": -12,
+        "shortJogs": -3,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -15.946420244977162,
+        "turns": -12,
+        "shortJogs": -3,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "0199840cb1a491d6eb89",
+        "steps": 763,
+        "accepted": 5,
+        "rejected": 758,
+        "queueRemaining": 3425,
+        "bestHash": "fd58f1a2f5e1e8afa5206960bc3984ff5180345756f0e815e1ecbc47f5f0cab1",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "68a86ef74f8ec9628954e909464c009d98fb2c902a6376e20b3a32d4b5cff555",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 511280.36966699996,
+        "milliseconds": 526835.328009,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "68a86ef74f8ec9628954e909464c009d98fb2c902a6376e20b3a32d4b5cff555",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 714089.9803739999,
+        "milliseconds": 731201.804006,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "inner-layers-complete-ca",
+      "baselineScore": {
+        "areaMm2": 981.1391369588592,
+        "copperMm": 2677.764588050188,
+        "turns": 806,
+        "shortJogs": 221,
+        "maxDetour": 3.4467210697603474
+      },
+      "headScore": {
+        "areaMm2": 981.1391369588592,
+        "copperMm": 2677.2474281769496,
+        "turns": 802,
+        "shortJogs": 218,
+        "maxDetour": 3.4467210697603474
+      },
+      "initialRoutingScore": {
+        "areaMm2": 981.1391369588592,
+        "copperMm": 2677.764588050188,
+        "turns": 806,
+        "shortJogs": 221,
+        "maxDetour": 3.4467210697603474
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": -0.5171598732385974,
+        "turns": -4,
+        "shortJogs": -3,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": -0.5171598732385974,
+        "turns": -4,
+        "shortJogs": -3,
+        "maxDetour": 0
+      },
+      "scoreRelation": "strict_improvement",
+      "refinement": {
+        "runId": "ccafe7e7f84c688b2432",
+        "steps": 248,
+        "accepted": 1,
+        "rejected": 247,
+        "queueRemaining": 1177,
+        "bestHash": "8dfda78835823d473536674674bd6deb44fed6bf234bbdb56a12afe9f3270126",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "a6def279fa2d3356a66ee94b1760a76eebb6c6d8e605005ce5903bd2fbca8776",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 533791.769356,
+        "milliseconds": 587903.2857829999,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "a6def279fa2d3356a66ee94b1760a76eebb6c6d8e605005ce5903bd2fbca8776",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 830634.114044,
+        "milliseconds": 889152.602638,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    },
+    {
+      "sample": "outer-layers",
+      "baselineScore": {
+        "areaMm2": 911.6824052010669,
+        "copperMm": 1837.6450652964877,
+        "turns": 1301,
+        "shortJogs": 765,
+        "maxDetour": 2.896665534554814
+      },
+      "headScore": {
+        "areaMm2": 911.6824052010669,
+        "copperMm": 1837.6450652964877,
+        "turns": 1301,
+        "shortJogs": 765,
+        "maxDetour": 2.896665534554814
+      },
+      "initialRoutingScore": {
+        "areaMm2": 911.6824052010669,
+        "copperMm": 1837.6450652964877,
+        "turns": 1301,
+        "shortJogs": 765,
+        "maxDetour": 2.896665534554814
+      },
+      "initialRoutingDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "refinementDelta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "delta": {
+        "areaMm2": 0,
+        "copperMm": 0,
+        "turns": 0,
+        "shortJogs": 0,
+        "maxDetour": 0
+      },
+      "scoreRelation": "plateau",
+      "refinement": {
+        "runId": "3d79cbfa025f6ec5f71e",
+        "steps": 1024,
+        "accepted": 0,
+        "rejected": 1024,
+        "queueRemaining": 3072,
+        "bestHash": "2b59d2a0b652bd6d572f04f18c31e3fde498f67707f981be32703370be10964f",
+        "contract": "upstream-validation+pareto-quality-v3"
+      },
+      "baseline": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "de3fd915f3c7d8c9bf4fd3c9b197596ba5e08c1be328f9c5223d7ab78736588f",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 1731692.4787609999,
+        "milliseconds": 1744520.342432,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      },
+      "head": {
+        "status": "solved",
+        "solved": true,
+        "requestedSignals": 47,
+        "routedSignals": 47,
+        "fixedPowerDogbones": 161,
+        "inputSha256": "de3fd915f3c7d8c9bf4fd3c9b197596ba5e08c1be328f9c5223d7ab78736588f",
+        "inputUnchanged": true,
+        "fixedPowerPreserved": true,
+        "solveMilliseconds": 1823320.3941849999,
+        "milliseconds": 1836697.976983,
+        "validation": {
+          "valid": true,
+          "complete": true,
+          "matched": true
+        },
+        "fixedDrcValid": true,
+        "combinedDrcValid": true
+      }
+    }
+  ]
+}

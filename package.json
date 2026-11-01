@@ -1,0 +1,11 @@
+{
+  "name": "incremental-bus-solver",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test ./tests/refiner.test.ts ./tests/dataset.test.ts ./tests/adapter.test.ts ./tests/ledger.test.ts",
+    "run": "bun scripts/cli.ts",
+    "typecheck": "bun ./node_modules/typescript/bin/tsc --noEmit"
+  }
+}
