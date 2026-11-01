@@ -1,0 +1,32 @@
+name: Tests and types
+on:
+  pull_request:
+  push:
+    branches: [main, feat/observable-incremental-bus-solver]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.2
+      - name: Install pinned dataset and dependencies
+        run: bash scripts/setup.sh
+      - name: Main tests
+        run: bun run test
+      - name: Main types
+        run: bun run typecheck
+      - name: Check reproduction shell syntax
+        run: bash -n benchmark.sh scripts/setup.sh scripts/reproduce-benchmark.sh
+      - name: Apply opt-in experiment in ephemeral CI checkout
+        run: git apply --check experiments/via-aware-local-pruning.patch && git apply experiments/via-aware-local-pruning.patch
+      - name: Experimental tests
+        run: bun test ./tests/refiner.test.ts ./tests/dataset.test.ts ./tests/adapter.test.ts ./tests/ledger.test.ts ./tests/via-aware.test.ts
+      - name: Experimental types
+        run: bun run typecheck
